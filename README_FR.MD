@@ -1,0 +1,2 @@
+Une simple télécommande pour Kodi.
+Selon si une lecture est en cours, elle affiche 6 boutons de contrôle de la lecture or 7 boutons de navigation. Les 3 boutons de contrôle du son sont toujours affichés.
