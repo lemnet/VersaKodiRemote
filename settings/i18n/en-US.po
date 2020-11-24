@@ -1,0 +1,29 @@
+msgid "kodi_settings"
+msgstr "Kodi settings"
+
+msgid "kodi_ip"
+msgstr "IP:"
+
+msgid "kodi_port"
+msgstr "Port:"
+
+msgid "kodi_login"
+msgstr "Login:"
+
+msgid "kodi_pass"
+msgstr "Password:"
+
+msgid "contact"
+msgstr "Contact"
+
+msgid "contacttxt"
+msgstr "Feel free to contribute, ask for enhancement, open an issue, or help with translations."
+
+msgid "licences"
+msgstr "Licences"
+
+msgid "licence"
+msgstr "Licence"
+
+msgid "lic_kodi"
+msgstr "App icon from "

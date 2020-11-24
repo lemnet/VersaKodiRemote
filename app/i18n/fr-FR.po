@@ -1,0 +1,8 @@
+msgid "appsettings"
+msgstr "SVP, configurez l'application dans les paramètres."
+
+msgid "connecting"
+msgstr "Connexion à Kodi..."
+
+msgid "playText"
+msgstr "Lecture :"

@@ -1,0 +1,29 @@
+msgid "kodi_settings"
+msgstr "Paramètres kodi"
+
+msgid "kodi_ip"
+msgstr "IP:"
+
+msgid "kodi_port"
+msgstr "Port :"
+
+msgid "kodi_login"
+msgstr "Identifiant :"
+
+msgid "kodi_pass"
+msgstr "Mot de passe :"
+
+msgid "contact"
+msgstr "Contact"
+
+msgid "contacttxt"
+msgstr "N'hésitez pas à contribuer, demander des améliorations, ouvrir un ticket, ou aider pour la traduction."
+
+msgid "licences"
+msgstr "Licences"
+
+msgid "licence"
+msgstr "Licence"
+
+msgid "lic_kodi"
+msgstr "Icone d'application de "

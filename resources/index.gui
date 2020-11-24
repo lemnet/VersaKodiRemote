@@ -1,0 +1,10 @@
+<svg id="main" pointer-events="visible">
+  <rect id="mainBackground" />
+  <rect id="vol" />  
+  <image id="backgroundL" class="background" href="backgroundL.png" load="sync" />
+  <image id="backgroundS" class="background" href="backgroundS.png" load="sync" />
+  <image id="muteIcon" class="muteIcon" href="mute.png" load="sync" />
+  <text id="playText" />
+  <text id="playingText" />
+  <textarea id="messages" />
+</svg>

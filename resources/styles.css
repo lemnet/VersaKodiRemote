@@ -1,0 +1,63 @@
+#mainBackground {
+  width: 100%;
+  height: 100%;
+  fill: black;
+}
+
+#vol {
+  width: 0;
+  height: 45;
+  x:20;
+  y:235;
+  fill: #404040;
+}
+
+#messages{
+  font-size: 32;
+  font-family: System-Bold;
+  font-weight: bold;
+  fill: white;
+  text-anchor: middle;
+  display-align: middle;
+  text-length:80;
+  width:90%;
+  x: 5%;
+  y: 15%;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  x: 0;
+  y: 0;
+}
+
+#muteIcon {
+  width: 20;
+  height: 20;
+  x: 140;
+  y: 248;
+}
+
+#playText{
+  font-size: 20;
+  font-family: System-Bold;
+  font-weight: bold;
+  fill: white;
+  text-anchor: middle;
+  text-length:15;
+  x: 50%;
+  y: 15%-10;
+}
+
+#playingText{
+  font-size: 28;
+  font-family: System-Bold;
+  font-weight: bold;
+  fill: white;
+  text-anchor: middle;
+  text-length:33;
+  width: 90%;
+  x: 50%;
+  y: 30%-14;
+}
