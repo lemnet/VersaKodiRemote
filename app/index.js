@@ -150,11 +150,11 @@ main.onclick = (evt) => {
         sendCommand("right");
         vibration.start('bump');
       }
-      if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 165 && (evt.screenY) < 230) { //down
+      if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 160 && (evt.screenY) < 230) { //down
         sendCommand("down");
         vibration.start('bump');
       }
-      if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 165 && (evt.screenY) < 230) { //party
+      if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 160 && (evt.screenY) < 230) { //party
         sendCommand("party");
         vibration.start('bump');
       } 
