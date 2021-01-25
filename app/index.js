@@ -31,6 +31,8 @@ messaging.peerSocket.onmessage = evt => {
     configok = true;
   else if (evt.data.key == "checkconn" && evt.data.value == "ok" )
     connok = true;
+  else if (evt.data.key == "checkconn" && evt.data.value == "ko" )
+    connok = false;
   else if (evt.data.key == "playing" ) {
     if (evt.data.value != "--") {
       playingText.text = evt.data.value;
@@ -78,14 +80,19 @@ function run() {
   counter = counter + 1;
   if (configok == false) {
     sendCommand("checkConfig");
-    if (counter > 5)
-      messages.text = gettext("connecting") + "\n\n" + gettext("appsettings");
+    messages.text = gettext("connecting") + "\n\n" + gettext("appsettings");
   }
   else {
-    if (connok == false) {
+    if ((counter % 20) == 0)
       sendCommand("checkConn");
-      if (counter > 5)
-        messages.text = gettext("connecting") + "\n\n" + gettext("appsettings");
+    if (connok == false) {
+      playText.style.display = "none";
+      playingText.style.display = "none";
+      backgroundL.style.display = "none";
+      backgroundS.style.display = "none";
+      messages.style.display = "inline";
+      sendCommand("checkConn");
+      messages.text = gettext("connecting");
     }
     else {
       counter = 0
@@ -102,63 +109,63 @@ setTimeout(run, 1000);
 
 //onclick
 main.onclick = (evt) => {
-  if (connok) {
-    if (backgroundL.style.display == "inline" && backgroundS.style.display == "none") {
-      if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 90 && (evt.screenY) < 160) { //backwark
-        sendCommand("backw");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 95 && (evt.screenY) < 160) { //play
-        sendCommand("play");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 90 && (evt.screenY) < 160) { //forward
-        sendCommand("forw");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 165 && (evt.screenY) < 230) { //previous
-        sendCommand("prev");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 165 && (evt.screenY) < 230) { //strop
-        sendCommand("stop");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 165 && (evt.screenY) < 230) { //next
-        sendCommand("next");
-        vibration.start('bump');
-      }
+  if (backgroundL.style.display == "inline" && backgroundS.style.display == "none") {
+    if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 90 && (evt.screenY) < 160) { //backwark
+      sendCommand("backw");
+      vibration.start('bump');
     }
-    else {
- if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 10 && (evt.screenY) < 85) { //back
-        sendCommand("back");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 10 && (evt.screenY) < 85) { //up
-        sendCommand("up");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 90 && (evt.screenY) < 160) { //left
-        sendCommand("left");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 90 && (evt.screenY) < 160) { //ok
-        sendCommand("ok");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 90 && (evt.screenY) < 160) { //right
-        sendCommand("right");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 160 && (evt.screenY) < 230) { //down
-        sendCommand("down");
-        vibration.start('bump');
-      }
-      if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 160 && (evt.screenY) < 230) { //party
-        sendCommand("party");
-        vibration.start('bump');
-      } 
+    if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 95 && (evt.screenY) < 160) { //play
+      sendCommand("play");
+      vibration.start('bump');
     }
+    if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 90 && (evt.screenY) < 160) { //forward
+      sendCommand("forw");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 165 && (evt.screenY) < 230) { //previous
+      sendCommand("prev");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 165 && (evt.screenY) < 230) { //strop
+      sendCommand("stop");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 165 && (evt.screenY) < 230) { //next
+      sendCommand("next");
+      vibration.start('bump');
+    }
+  }
+  else if (backgroundL.style.display == "none" && backgroundS.style.display == "inline") {
+    if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 10 && (evt.screenY) < 85) { //back
+      sendCommand("back");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 10 && (evt.screenY) < 85) { //up
+      sendCommand("up");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 25 && (evt.screenX) < 105 && (evt.screenY) > 90 && (evt.screenY) < 160) { //left
+      sendCommand("left");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 90 && (evt.screenY) < 160) { //ok
+      sendCommand("ok");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 90 && (evt.screenY) < 160) { //right
+      sendCommand("right");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 110 && (evt.screenX) < 190 && (evt.screenY) > 160 && (evt.screenY) < 230) { //down
+      sendCommand("down");
+      vibration.start('bump');
+    }
+    if ((evt.screenX) > 200 && (evt.screenX) < 280 && (evt.screenY) > 160 && (evt.screenY) < 230) { //party
+      sendCommand("party");
+      vibration.start('bump');
+    } 
+  }
+  if (backgroundL.style.display == "inline" || backgroundS.style.display == "inline") {
     if ((evt.screenX) > 125 && (evt.screenX) < 175 && (evt.screenY) > 240 && (evt.screenY) < 290) { //mute
       sendCommand("mute");
       vibration.start('bump');

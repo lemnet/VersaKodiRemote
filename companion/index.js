@@ -109,6 +109,13 @@ function checkConn() {
         }
         sendVal(data);
       }
+      else {
+        let data = {
+          key: "checkconn",
+          value : "ko"
+        }
+        sendVal(data);
+      }
     });
   })
   .catch(function (err) {
@@ -215,11 +222,14 @@ function getPlaying() {
 }
 
 function seek(param) {
-  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.Seek", "id":1, "params": { "playerid": ') + playerid + encodeURI(',"value":"small') + param + encodeURI('"}}');
+//  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.Seek", "id":1, "params": { "playerid": ') + playerid + encodeURI(',"value":"small') + param + encodeURI('"}}');
+  let url = "http://" + ip +":" + port + "/jsonrpc";
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: '{"jsonrpc": "2.0", "method": "Player.Seek", "id":1, "params": { "playerid": ' + playerid + ',"value":"small' + param + '"}}',
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
@@ -229,11 +239,14 @@ function seek(param) {
 }
 
 function play() {
-  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.PlayPause", "id":1, "params": { "playerid": ') + playerid + encodeURI('}}');
+//  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.PlayPause", "id":1, "params": { "playerid": ') + playerid + encodeURI('}}');
+  let url = "http://" + ip +":" + port + "/jsonrpc";
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: '{"jsonrpc": "2.0", "method": "Player.PlayPause", "id":1, "params": { "playerid": ' + playerid + '}}',
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
@@ -243,11 +256,14 @@ function play() {
 }
 
 function goto(param) {
-  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.GoTo", "id":1, "params": { "playerid": ') + playerid + encodeURI(',"to":"') + param + encodeURI('"}}');
+//  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.GoTo", "id":1, "params": { "playerid": ') + playerid + encodeURI(',"to":"') + param + encodeURI('"}}');
+  let url = "http://" + ip +":" + port + "/jsonrpc";
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: '{"jsonrpc":"2.0","method":"Player.GoTo","id":1,"params": { "playerid": ' + playerid + ',"to":"' + param + '"}}',   
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
@@ -257,11 +273,14 @@ function goto(param) {
 }
 
 function stop() {
-  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.Stop", "id":1, "params": { "playerid": ') + playerid + encodeURI('}}');
+//  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.Stop", "id":1, "params": { "playerid": ') + playerid + encodeURI('}}');
+  let url = "http://" + ip +":" + port + "/jsonrpc";
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: '{"jsonrpc": "2.0", "method": "Player.Stop", "id":1, "params": { "playerid": ' + playerid + '}}',
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
@@ -271,11 +290,14 @@ function stop() {
 }
 
 function key(param) {
-  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Input.ExecuteAction", "params": {"action" : "') + param + encodeURI('"}, "id": 1}');
+//  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Input.ExecuteAction", "params": {"action" : "') + param + encodeURI('"}, "id": 1}');
+  let url = "http://" + ip +":" + port + "/jsonrpc";
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: '{"jsonrpc": "2.0", "method": "Input.ExecuteAction", "params": {"action" : "' + param + '"}, "id": 1}',
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
@@ -285,11 +307,14 @@ function key(param) {
 }
 
 function party() {
-  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.SetPartymode", "params": { "playerid": ') + playerid + encodeURI(',"partymode":true}}');
+//  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Player.SetPartymode", "params": { "playerid": ') + playerid + encodeURI(',"partymode":true}}');
+  let url = "http://" + ip +":" + port + "/jsonrpc";
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: '{"jsonrpc": "2.0", "method": "Player.SetPartymode", "params": { "playerid": ' + playerid + ',"partymode":true}}',
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
@@ -299,11 +324,14 @@ function party() {
 }
 
 function vol(param) {
-  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": {"volume":"') + param + encodeURI('"}, "id": 1}');
+//  let url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": {"volume":"') + param + encodeURI('"}, "id": 1}');
+  let url = "http://" + ip +":" + port + "/jsonrpc";
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: '{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": {"volume":"' + param + '"}, "id": 1}',
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
@@ -323,15 +351,18 @@ function vol(param) {
 }
 
 function mute() {
-  let url = "";
+  let url = "http://" + ip +":" + port + "/jsonrpc";
+  let bo = "";
   if (muted == true)
-    url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Application.SetMute", "id":1, "params": {"mute": false}}');
+    bo = '{"jsonrpc": "2.0", "method": "Application.SetMute", "id":1, "params": {"mute": false}}';
   else
-    url = "http://" + ip +":" + port + "/jsonrpc?request=" + encodeURI('{"jsonrpc": "2.0", "method": "Application.SetMute", "id":1, "params": {"mute": true}}');
+    bo = '{"jsonrpc": "2.0", "method": "Application.SetMute", "id":1, "params": {"mute": true}}';
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
+    body: bo,
     headers: {
-      "Authorization": "Basic " + btoa(login+":"+pass)
+      "Authorization": "Basic " + btoa(login+":"+pass),
+      "Content-Type": "application/json"
     },
     timeout: 10000
   })
